@@ -19,4 +19,5 @@ void rangeBasedLoopDemo()
         std::cout << c;
     }
     std::cout << "\n";
+    printDivider();
 }
