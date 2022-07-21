@@ -13,10 +13,10 @@ void arrayDemo()
     std::cout << "std::array size: " << sizeof(containerArray) << '\n';
     std::cout << "C-style array memory range: [" << static_cast<void *>(cStyleArray) << ", " << static_cast<void *>(&cStyleArray[10]) << "]\n";
     std::cout << "C-style array memdump:\n";
-    dumpMem(cStyleArray, sizeof(cStyleArray));
+    hexdump(cStyleArray, sizeof(cStyleArray));
     std::cout << "std::array memory range: [" << static_cast<void *>(&containerArray) << ", " << static_cast<void *>(&containerArray[10]) << "]\n";
     std::cout << "std::array memdump:\n";
-    dumpMem(&containerArray, sizeof(containerArray));
+    hexdump(&containerArray, sizeof(containerArray));
     printDivider();
 
     // An array can also be used as a tuple of N elements of the same type.

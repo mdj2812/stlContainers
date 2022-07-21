@@ -18,17 +18,27 @@ void printAll(const InputIt begin, const InputIt end)
     std::cout << "{";
     for (auto it = begin; it != end; ++it)
     {
-        std::cout << *it << ",";
+        std::cout << std::dec << *it << ",";
     }
     std::cout << "\b}\n";
 }
 
-void dumpMem(const void *mem, unsigned int n)
+void hexdump(void *ptr, int buflen)
 {
-    const char *p = reinterpret_cast<const char *>(mem);
-    for (unsigned int i = 0; i < n; i++)
+    unsigned char *buf = (unsigned char *)ptr;
+    int i, j;
+    for (i = 0; i < buflen; i += 16)
     {
-        std::cout << std::hex << int(p[i]) << " ";
+        printf("%06x: ", i);
+        for (j = 0; j < 16; j++)
+            if (i + j < buflen)
+                printf("%02x ", buf[i + j]);
+            else
+                printf("   ");
+        printf(" ");
+        for (j = 0; j < 16; j++)
+            if (i + j < buflen)
+                printf("%c", isprint(buf[i + j]) ? buf[i + j] : '.');
+        printf("\n");
     }
-    std::cout << std::endl;
 }
