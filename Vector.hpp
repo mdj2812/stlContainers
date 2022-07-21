@@ -5,6 +5,34 @@
 
 #include "Utility.hpp"
 
+// constexpr bool testVector(int n)
+// {
+//     std::vector<int> vec(n, 1);
+//     int sum = 0;
+//     for (auto &elem : vec)
+//         sum += elem;
+//     return n == sum;
+// }
+
+class Foo
+{
+public:
+    float x, y;
+
+    // Parameterized Constructor
+    Foo(float x, float y)
+        : x(x), y(y)
+    {
+    }
+
+    // Copy Constructor
+    Foo(const Foo &Foo)
+        : x(Foo.x), y(Foo.y)
+    {
+        std::cout << "Copied" << std::endl;
+    }
+};
+
 void vectorDemo()
 {
     // the allocated memory usually does not change with the number of elements
@@ -39,4 +67,45 @@ void vectorDemo()
     std::cout << "\b \n";
     std::cout << "After clear, capacity of vector a1: " << a1.capacity() << " and its size: " << a1.size() << '\n';
     printDivider();
+
+    // push_back vs emplace_back
+    std::vector<Foo> foos;
+    foos.reserve(2);
+    std::cout << "push_back:";
+    foos.push_back(Foo(1, 2));
+    std::cout << "emplace_back:";
+    foos.emplace_back(1, 2);
+    printDivider();
+
+    // insert() applied to a vector will invalidate any iterators or references to elements of the vector
+    std::vector<int> myvector(3, 100);
+    std::vector<int>::iterator it;
+
+    std::cout << "myvector contains: ";
+    printAll(myvector.cbegin(), myvector.cend());
+
+    it = myvector.begin();
+    std::cout << "it before insertion: " << *it << '\n';
+
+    it = myvector.insert(it, 200);
+
+    myvector.insert(it, 2, 300);
+
+    std::cout << "it after insertion: " << *it << '\n';
+
+    // "it" no longer valid, get a new one:
+    it = myvector.begin();
+
+    std::vector<int> anothervector(2, 400);
+    myvector.insert(it + 2, anothervector.begin(), anothervector.end());
+
+    int myarray[] = {501, 502, 503};
+    myvector.insert(myvector.begin(), myarray, myarray + 3);
+
+    std::cout << "myvector contains: ";
+    printAll(myvector.cbegin(), myvector.cend());
+    printDivider();
+
+    // std::vector under constexpr context. Not supported by the compiler yet
+    // static_assert(testVector(10));
 }
