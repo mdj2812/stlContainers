@@ -87,20 +87,12 @@ void vectorDemo()
     it = myvector.begin();
     std::cout << "it before insertion: " << *it << '\n';
 
-    it = myvector.insert(it, 200);
-
     myvector.insert(it, 2, 300);
 
     std::cout << "it after insertion: " << *it << '\n';
 
     // "it" no longer valid, get a new one:
     it = myvector.begin();
-
-    std::vector<int> anothervector(2, 400);
-    myvector.insert(it + 2, anothervector.begin(), anothervector.end());
-
-    int myarray[] = {501, 502, 503};
-    myvector.insert(myvector.begin(), myarray, myarray + 3);
 
     std::cout << "myvector contains: ";
     printAll(myvector.cbegin(), myvector.cend());
