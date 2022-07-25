@@ -18,6 +18,8 @@ struct Point
         }
         return xRes;
     }
+
+    bool operator==(const Point &rhs) const { return (x == rhs.x) and (y == rhs.y); }
 };
 
 std::ostream &operator<<(std::ostream &os, const Point &point)
