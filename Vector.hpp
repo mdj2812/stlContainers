@@ -3,6 +3,7 @@
 #include <iostream>
 #include <vector>
 
+#include "Foo.hpp"
 #include "Utility.hpp"
 
 // constexpr bool testVector(int n)
@@ -13,25 +14,6 @@
 //         sum += elem;
 //     return n == sum;
 // }
-
-class Foo
-{
-public:
-    float x, y;
-
-    // Parameterized Constructor
-    Foo(float x, float y)
-        : x(x), y(y)
-    {
-    }
-
-    // Copy Constructor
-    Foo(const Foo &Foo)
-        : x(Foo.x), y(Foo.y)
-    {
-        std::cout << "Copied" << std::endl;
-    }
-};
 
 void vectorDemo()
 {
