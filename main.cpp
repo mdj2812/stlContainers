@@ -5,6 +5,7 @@
 #include "Map.hpp"
 #include "Multiset.hpp"
 #include "MyContainer.hpp"
+#include "PriorityQueue.hpp"
 #include "Queue.hpp"
 #include "Set.hpp"
 #include "Stack.hpp"
@@ -27,4 +28,5 @@ int main(int, char **)
     unorderedMultiSet();
     stackDemo();
     queueDemo();
+    priorityQueueDemo();
 }
