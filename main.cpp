@@ -5,6 +5,7 @@
 #include "Map.hpp"
 #include "Multiset.hpp"
 #include "MyContainer.hpp"
+#include "Queue.hpp"
 #include "Set.hpp"
 #include "Stack.hpp"
 #include "UnorderedMultiSet.hpp"
@@ -25,4 +26,5 @@ int main(int, char **)
     unorderedSetDemo();
     unorderedMultiSet();
     stackDemo();
+    queueDemo();
 }
