@@ -54,6 +54,11 @@ void mapDemo()
     printAll(m1.begin(), m1.end());
     printDivider();
 
+    // for const map, only way for element access is at
+    const std::map<int, std::string> cm{{1, "a"}, {2, "b"}, {3, "c"}};
+    auto &v = cm.at(1);
+    // auto &v = cm[1]; // Build fail!
+
     // insert_or_assign <=> operator[]
     m1.insert_or_assign("GPU", 30);         // update an existing value
     m1.insert_or_assign("MOTHERBOARD", 10); // insert a new value
